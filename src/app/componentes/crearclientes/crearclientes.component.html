@@ -1,0 +1,125 @@
+
+<div class="card-body">
+
+   <div class="card-header">
+    
+<form  [formGroup]="registerForm" class="w-250 container card" >
+
+    <div class="form-row row">
+   
+   <div class="col-md-5">
+
+    <div class="form-group">
+        <div class="card-header">
+             <span >
+            <p class="text-primary">Datos Generales</p>
+          </span>
+        </div>
+       
+
+        <div >
+            <label for="inputFirstName" class="col-form-label">Nombre</label>
+        <input type="text" formControlName="nombre" class="form-control mb-3" id="nombre">
+        
+            <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="text-danger">
+                <div *ngIf="nombre.errors?.['required']">
+                    El Nombre es requerido.
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="form-group">
+    
+        <div >
+
+            <label for="inputLasttName" class="col-form-label">Fecha Inicio: </label>
+        
+            <mat-form-field appearance="fill">
+                <mat-label>Fecha Inicio</mat-label>
+                <input matInput [matDatepicker]="dob" formControlName="fechainicio">
+                <mat-datepicker-toggle matSuffix [for]="dob"></mat-datepicker-toggle>
+                <mat-datepicker #dob></mat-datepicker>
+              </mat-form-field>
+            
+        <div *ngIf="fechainicio.invalid && (fechainicio.dirty || fechainicio.touched)" class="text-danger">
+            <div *ngIf="fechainicio.errors?.['required']">
+                La fecha es requerida.
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <div class="form-group">
+    
+        <div >
+
+            <label for="inputfechafin" class="col-form-label">Fecha Fin: </label>
+        
+            <mat-form-field appearance="fill">
+                <mat-label>Fecha Fin</mat-label>
+                <input  matInput [matDatepicker]="dob1" formControlName="fechafin">
+                <mat-datepicker-toggle matSuffix [for]="dob1"></mat-datepicker-toggle>
+                <mat-datepicker #dob1></mat-datepicker>
+              </mat-form-field>
+            
+        <div *ngIf="fechafin.invalid && (fechafin.dirty || fechafin.touched)" class="text-danger">
+            <div *ngIf="fechafin.errors?.['required']">
+                La fecha es requerida.
+            </div>
+        </div>
+    </div>
+    </div>
+   
+ 
+   
+
+
+
+
+    
+
+    <div class="form-group">
+       
+        <div>
+            <label for="inputLasttName" class="col-form-label">Telefono</label>
+        <input type="text" formControlName="telefono" class="form-control" id="telefono"
+        (keypress)="validateFormat($event)">
+    
+        <div *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)" class="text-danger">
+            <div *ngIf="telefono.errors?.['required']">
+                El telefono es requerido.
+            </div>
+        </div>
+
+    </div>
+    </div>
+ 
+
+    <div class="form-group">
+     
+        <div >
+            <label for="inputLasttName" class="col-form-label">Correo</label>
+        <input type="text" formControlName="correo_electronico" class="form-control" id="correo_electronico"
+        pattern="^[a-z0-9._%+\-]+@[a-z0-9.\-]+.[a-z]{2,4}$" 
+        [ngClass]="{'is-invalid animated shake': correo_electronico.invalid && correo_electronico.touched}">
+    
+    </div>
+    </div>
+   
+<button type="submit" (click)="saveData()"  class="btn btn-dark mt-3  mx-5">Enviar Formulario</button>
+   
+
+   
+</div>
+
+</div>
+
+</form>
+</div>
+
+</div>
+
